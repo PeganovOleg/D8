@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 
-{% block title %}ДЕМОНСТРАЦИЯ КЭША{% endblock %}
+{% block title %}ДЕМОНСТРАЦИЯ ИСПОЛЬЗОВАНИЯ КЭША{% endblock %}
 
 {% block main_content %}
   <h1>КЭШИРОВАНИЕ СТРАНИЦЫ</h1>
   <ul>
  {% if b %}
-     <li>КЭШИРОВАНИЕ ДАТЫ И ВРЕМЕНИ:</li>
+     <li>ПРОВЕРКА КЭШИРОВАНИЕ ДАТЫ И ВРЕМЕНИ:</li>
   	 <li><span class="badge badge-info">{{ b1 }}: {{ b }}</span></li>
   {% endif %}
   </ul>
