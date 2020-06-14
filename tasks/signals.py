@@ -5,12 +5,12 @@ from collections import Counter
 from django.db.models.signals import post_save
 
 
+
+
 @receiver(m2m_changed, sender=TodoItem.category.through)
 def task_cats_added(sender, instance, action, model, **kwargs):
     if action != "post_add":
         return
-
-    print("jfhdkjfh")   
 
     for cat in instance.category.all():
         slug = cat.slug
@@ -18,14 +18,14 @@ def task_cats_added(sender, instance, action, model, **kwargs):
         new_count = 0
         for task in TodoItem.objects.all():
             new_count += task.category.filter(slug=slug).count()
-   
-    for slug, new_count in cat_counter.items():
+
+           
+
         Category.objects.filter(slug=slug).update(todos_count=new_count)
 
 
 @receiver(m2m_changed, sender=TodoItem.category.through)
 def task_cats_removed(sender, instance, action, model, **kwargs):
-    print("jfhdkjfh") 
     if action != "post_remove":
         return
 
@@ -37,11 +37,9 @@ def task_cats_removed(sender, instance, action, model, **kwargs):
     for slug, new_count in cat_counter.items():
         Category.objects.filter(slug=slug).update(todos_count=new_count)
 
-@receiver(post_save, sender = TodoItem.priority)
+@receiver(post_save, sender=TodoItem.priority)
 def add_score(sender, instance, action, model, **kwargs):
-    print("jfhdkjfh") 
-    new_count+=1
-    Category.objects.update(todos_count=new_count)
-    print(instance.priority)
-    instance.priority += 1
-    profile.save()        
+    print("ghbjhbntns")
+    profile = instance.TodoItem
+    profile.priority += 1
+    profile.save()

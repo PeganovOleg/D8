@@ -21,11 +21,13 @@ def index(request):
         'todoitem')).order_by("-total_tasks")
     counts = {c.name: c.total_tasks for c in counts}
 
+    print(counts)
+
     return render(request, "tasks/index.html", {"counts": counts})
 
 
 
-@cache_page(300)
+@cache_page(180)
 def tasks_view(request): 
     import datetime
     b = datetime.datetime.now()
